@@ -15,18 +15,19 @@
 
 ```tsx
 function searchId(id: number) {
-    let result = tasks.findIndex(task => {
+    let resultId = tasks.findIndex(task => {
       return task.id == id;
     });
-    return result;
+    return resultId;
   }
 
   function generateId() {
     let id = 0;
-    if (tasks.length > 0) {
-      id = tasks[tasks.length - 1].id + 1;
+    const tasksLengh = tasks.length;
+
+    if (tasksLengh > 0) {
+      id = tasks[tasksLengh - 1].id + 1;
     }
-    console.log(id);
     return id;
   }
 
@@ -52,7 +53,6 @@ function searchId(id: number) {
     // Remova uma task da listagem pelo ID
     let updatedTasks = [...tasks];
     const index = searchId(id);
-    console.log(index);
     updatedTasks.splice(index, index + 1);
     setTasks(updatedTasks);
   }
